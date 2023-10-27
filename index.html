@@ -9,6 +9,7 @@
         /* Basic Styles */
         body {
             font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s; /* smooth transition */
         }
         header {
             background-color: #555;
@@ -61,48 +62,46 @@
     </div>
     <script>
         // Search Autocomplete
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.querySelector('input[type="search"]');
+        const searchInput = document.querySelector('input[type="search"]');
 
-            searchInput.addEventListener('input', function() {
-                // Simulated search data
-                const searchData = ['Digital Library', 'New Materials', 'Ask A Librarian', 'Overdrive'];
-                const value = searchInput.value.toLowerCase();
-                
-                if (value) {
-                    const suggestions = searchData.filter(data => data.toLowerCase().includes(value));
-                    // Display these suggestions to users
-                    console.log(suggestions);
-                }
-            });
+        searchInput?.addEventListener('input', function() {
+            // Simulated search data
+            const searchData = ['Digital Library', 'New Materials', 'Ask A Librarian', 'Overdrive'];
+            const value = searchInput.value.toLowerCase();
+            
+            if (value) {
+                const suggestions = searchData.filter(data => data.toLowerCase().includes(value));
+                // Display these suggestions to users
+                console.log(suggestions);
+            }
+        });
 
-            // Carousel for Featured Resources
-            const carousel = document.querySelector('.carousel');
-            let currentIndex = 0;
+        // Carousel for Featured Resources
+        const carousel = document.querySelector('.carousel');
+        let currentIndex = 0;
 
-            setInterval(function() {
-                const images = carousel.querySelectorAll('img');
-                images[currentIndex].style.display = 'none';
-                
-                currentIndex++;
-                if (currentIndex >= images.length) {
-                    currentIndex = 0;
-                }
-                
-                images[currentIndex].style.display = 'block';
-            }, 3000);
+        setInterval(function() {
+            const images = carousel.querySelectorAll('img');
+            images[currentIndex].style.display = 'none';
+            
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            
+            images[currentIndex].style.display = 'block';
+        }, 3000);
 
-            // Light/Dark Theme Toggle
-            const themeToggle = document.getElementById('theme-toggle');
-            themeToggle.addEventListener('click', function() {
-                const body = document.body;
-                
-                if (body.classList.contains('dark-mode')) {
-                    body.classList.remove('dark-mode');
-                } else {
-                    body.classList.add('dark-mode');
-                }
-            });
+        // Light/Dark Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', function() {
+            const body = document.body;
+            
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+            } else {
+                body.classList.add('dark-mode');
+            }
         });
     </script>
 </body>
