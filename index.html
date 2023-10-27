@@ -2,50 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Rochester Public Library</title>
-    <script src="scripts.js" defer></script>
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #555;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        #quick-links {
+            background-color: #f4f4f4;
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .carousel img {
+            display: none;
+        }
+        .carousel img:first-child {
+            display: block;
+        }
 
+        /* Dark Theme */
+        body.dark-mode {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+        body.dark-mode header {
+            background-color: #444;
+        }
+        body.dark-mode #quick-links {
+            background-color: #444;
+            color: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="path-to-logo" alt="Rochester Public Library Logo" id="library-logo">
-        <nav>
-            <ul>
-                <li><a href="#">Log In</a></li>
-                <li><a href="#">My Account</a></li>
-                <!-- Add other navigation links as required -->
-            </ul>
-        </nav>
+        <h1>Rochester Public Library</h1>
+        <button id="theme-toggle">Toggle Dark Mode</button>
     </header>
-    <button id="theme-toggle">Toggle Dark Mode</button>
+    <div id="quick-links">
+        <a href="#">New Materials</a>
+        <a href="#">Digital Library</a>
+        <a href="#">Ask A Librarian</a>
+    </div>
+    <div class="carousel">
+        <!-- Replace with actual image paths -->
+        <img src="img1.jpg" alt="Resource 1">
+        <img src="img2.jpg" alt="Resource 2">
+        <img src="img3.jpg" alt="Resource 3">
+    </div>
+    <script>
+        // Search Autocomplete
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('input[type="search"]');
 
-    <section id="search-section">
-        <input type="text" placeholder="Search..." id="search-input">
-        <button>Search</button>
-    </section>
+            searchInput.addEventListener('input', function() {
+                // Simulated search data
+                const searchData = ['Digital Library', 'New Materials', 'Ask A Librarian', 'Overdrive'];
+                const value = searchInput.value.toLowerCase();
+                
+                if (value) {
+                    const suggestions = searchData.filter(data => data.toLowerCase().includes(value));
+                    // Display these suggestions to users
+                    console.log(suggestions);
+                }
+            });
 
-    <section id="featured-resource">
-        <div class="carousel">
-            <img src="path-to-image1" alt="Featured Resource 1">
-            <!-- Add more images for carousel effect -->
-        </div>
-    </section>
+            // Carousel for Featured Resources
+            const carousel = document.querySelector('.carousel');
+            let currentIndex = 0;
 
-    <aside>
-        <div id="quick-links">
-            <h2>Quick Links</h2>
-            <ul>
-                <li><a href="#">Digital Library</a></li>
-                <li><a href="#">Ask A Librarian</a></li>
-                <!-- Add more quick links as required -->
-            </ul>
-        </div>
-    </aside>
+            setInterval(function() {
+                const images = carousel.querySelectorAll('img');
+                images[currentIndex].style.display = 'none';
+                
+                currentIndex++;
+                if (currentIndex >= images.length) {
+                    currentIndex = 0;
+                }
+                
+                images[currentIndex].style.display = 'block';
+            }, 3000);
 
-    <footer>
-        <p>&copy; 2023 Rochester Public Library</p>
-    </footer>
+            // Light/Dark Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', function() {
+                const body = document.body;
+                
+                if (body.classList.contains('dark-mode')) {
+                    body.classList.remove('dark-mode');
+                } else {
+                    body.classList.add('dark-mode');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
