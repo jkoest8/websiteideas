@@ -310,7 +310,7 @@
         // Add 'data-translate' attribute to each translatable element on page load
         document.addEventListener('DOMContentLoaded', function() {
             for (let key in translations) {
-                const elements = document.querySelectorAll(`:contains("${key}")`);
+                const elements = Array.from(document.body.getElementsByTagName('*')).filter(el => el.textContent.trim() === key && el.childElementCount === 0);
                 elements.forEach(element => {
                     if (element.childNodes.length === 1) { // ensure we're not overwriting nested elements
                         element.setAttribute('data-translate', key);
