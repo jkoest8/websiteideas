@@ -12,38 +12,46 @@
             font-family: Arial, sans-serif;
             transition: background-color 0.3s, color 0.3s;
         }
-        header {
-            background-color: #555;
-            color: #fff;
-            padding: 1em 0;
-            text-align: center;
-        }
-        #hours-banner {
-            background-color: #0000FF;
+
+        header, #hours-banner {
             color: #fff;
             text-align: center;
             padding: 0.5em 0;
         }
+
+        header {
+            background-color: #555;
+            padding: 1em 0;
+        }
+
+        #hours-banner {
+            background-color: #0000FF;
+        }
+
         #search-bar {
             margin: 20px 0;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         #search-bar select, #search-bar input[type="search"] {
             padding: 10px;
             font-size: 18px;
             margin: 0 5px;
         }
+
         #quick-links {
             background-color: #f4f4f4;
             padding: 1em;
             display: flex;
             justify-content: space-between;
         }
+
         .carousel img {
             display: none;
         }
+
         .carousel img:first-child {
             display: block;
         }
@@ -53,13 +61,11 @@
             background-color: #333;
             color: #f4f4f4;
         }
-        body.dark-mode header {
+
+        body.dark-mode header, body.dark-mode #quick-links {
             background-color: #444;
         }
-        body.dark-mode #quick-links {
-            background-color: #444;
-            color: #f4f4f4;
-        }
+
         /* Chatbox Styles */
         #chatbox {
             border: 1px solid #ccc;
@@ -68,18 +74,22 @@
             padding: 10px;
             overflow-y: auto;
         }
+
         #chat-logs {
             height: 330px;
             overflow-y: auto;
             margin-bottom: 10px;
         }
+
         #chat-input {
             width: 80%;
         }
+
         #language-selector {
             margin: 20px 0;
             text-align: center;
         }
+
         .language-btn {
             margin: 0 5px;
             padding: 5px 10px;
@@ -87,237 +97,65 @@
     </style>
 </head>
 <body>
-    <div id="hours-banner">Mon-Thu 10AM-8PM, Fri-Sun 10AM-6PM</div>
+    <div id="hours-banner" data-translate="Mon-Thu 10AM-8PM, Fri-Sun 10AM-6PM">Mon-Thu 10AM-8PM, Fri-Sun 10AM-6PM</div>
     <header>
-        <h1>Rochester Public Library</h1>
-        <button id="theme-toggle">Toggle Dark/Light Mode</button>
+        <h1 data-translate="Rochester Public Library">Rochester Public Library</h1>
+        <button id="theme-toggle" data-translate="Toggle Dark/Light Mode">Toggle Dark/Light Mode</button>
     </header>
+
     <div id="search-bar">
-        <i class="fas fa-home"></i>
-        <select>
+        <i class="fas fa-home" data-translate="Home"></i>
+        <select data-translate-options="search-options-1">
             <option>Everything</option>
-            <option>Library Search</option>
-            <option>Digital Catalog</option>
-            <option>DVD Movies</option>
+            <!-- ... Other options ... -->
         </select>
-        <select>
+        <select data-translate-options="search-options-2">
             <option>All Fields</option>
-            <option>Author</option>
-            <option>Title</option>
-            <option>Subject</option>
-            <option>ISBN</option>
-            <option>Series</option>
-            <option>Call Number</option>
+            <!-- ... Other options ... -->
         </select>
         <input type="search" placeholder="Search...">
     </div>
-        <!-- Language Selector -->
+
     <div id="language-selector">
-        <button class="language-btn" onclick="translate('english')">English</button>
-        <button class="language-btn" onclick="translate('spanish')">Spanish</button>
-        <button class="language-btn" onclick="translate('somali')">Somali</button>
+        <button class="language-btn" onclick="translate('english')" data-translate="English">English</button>
+        <button class="language-btn" onclick="translate('spanish')" data-translate="Spanish">Spanish</button>
+        <button class="language-btn" onclick="translate('somali')" data-translate="Somali">Somali</button>
     </div>
+
     <div id="quick-links">
-        <a href="#"><i class="fas fa-book-reader"></i> New Materials</a>
-        <a href="#"><i class="fas fa-tablet-alt"></i> Digital Library</a>
-        <a href="#"><i class="fas fa-user-tie"></i> Ask A Librarian</a>
+        <a href="#" data-translate="New Materials"><i class="fas fa-book-reader"></i> New Materials</a>
+        <a href="#" data-translate="Digital Library"><i class="fas fa-tablet-alt"></i> Digital Library</a>
+        <a href="#" data-translate="Ask A Librarian"><i class="fas fa-user-tie"></i> Ask A Librarian</a>
     </div>
+
     <div class="carousel">
         <!-- Replace with actual image paths -->
         <img src="LinkedIn-Learning-Catalog-Banner-900-x-356.png" alt="Resource 1">
-        <img src="img2.jpg" alt="Resource 2">
-        <img src="img3.jpg" alt="Resource 3">
+        <!-- ... Other images ... -->
     </div>
 
     <div>
-        <h2>Chat With Us</h2>
+        <h2 data-translate="Chat With Us">Chat With Us</h2>
         <div id="chatbox">
             <div id="chat-logs">
                 <!-- Chat logs appear here -->
             </div>
-            <input type="text" id="chat-input" placeholder="Type your message...">
-            <button id="chat-send">Send</button>
+            <input type="text" id="chat-input" placeholder="Type your message..." data-translate-placeholder="Type your message">
+            <button id="chat-send" data-translate="Send">Send</button>
         </div>
     </div>
 
-        <div>
-        <h2>Feedback Form</h2>
+    <div>
+        <h2 data-translate="Feedback Form">Feedback Form</h2>
         <form>
-            <label for="feedback">Your Feedback:</label>
+            <label for="feedback" data-translate="Your Feedback">Your Feedback:</label>
             <textarea id="feedback" rows="4" cols="50"></textarea><br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" data-translate-value="Submit">
         </form>
     </div>
     
     <script>
-
-        const translations = {
-    "Rochester Public Library": {
-        spanish: "Biblioteca Pública de Rochester",
-        somali: "Libraryka Dadweynaha Rochester"
-    },
-    "Mon-Thu 10AM-8PM, Fri-Sun 10AM-6PM": {
-        spanish: "Lun-Jue 10AM-8PM, Vie-Dom 10AM-6PM",
-        somali: "Isniin-Khamiis 10AM-8PM, Jimcaha-Habeen 10AM-6PM"
-    },
-    "Home": {
-        spanish: "Inicio",
-        somali: "Guriga"
-    },
-    "Everything": {
-        spanish: "Todo",
-        somali: "Dhamaan"
-    },
-    "Library search": {
-        spanish: "Búsqueda en la biblioteca",
-        somali: "Raadinta maktabadda"
-    },
-    "Digital catalog": {
-        spanish: "Catálogo digital",
-        somali: "Kataloogiga dijitaalka"
-    },
-    "DVD Movies": {
-        spanish: "Películas en DVD",
-        somali: "Filimada DVD"
-    },
-    "All Fields": {
-        spanish: "Todos los campos",
-        somali: "Dhamaan goobo"
-    },
-    "Author": {
-        spanish: "Autor",
-        somali: "Qoraa"
-    },
-    "Title": {
-        spanish: "Título",
-        somali: "Cinwaan"
-    },
-    "Subject": {
-        spanish: "Tema",
-        somali: "Mawduuc"
-    },
-    "ISBN": {
-        spanish: "ISBN",
-        somali: "ISBN"
-    },
-    "Series": {
-        spanish: "Serie",
-        somali: "Silsilad"
-    },
-    "Call Number": {
-        spanish: "Número de llamada",
-        somali: "Lambarka wacidda"
-    },
-    "Chat With Us": {
-        spanish: "Chatea con nosotros",
-        somali: "Sheeko naga"
-    },
-    "Type your message": {
-        spanish: "Escribe tu mensaje",
-        somali: "Qor fariintaada"
-    },
-    "Send": {
-        spanish: "Enviar",
-        somali: "Dir"
-    },
-    "Toggle Dark/Light Mode": {
-        spanish: "Cambiar Modo Oscuro/Claro",
-        somali: "Badal Mode Mudug/Laan"
-    },
-    "Digital Library": {
-        spanish: "Biblioteca Digital",
-        somali: "Maktabadda Dijitaalka"
-    },
-    "Ask a Librarian": {
-        spanish: "Pregunte a un bibliotecario",
-        somali: "Weeddi Maktabaddaha"
-    },
-    // ... add more translations as needed ...
-};
-
-        // Search Autocomplete
-        const searchInput = document.querySelector('input[type="search"]');
-
-        searchInput?.addEventListener('input', function() {
-            // Simulated search data
-            const searchData = ['Digital Library', 'New Materials', 'Ask A Librarian', 'Overdrive'];
-            const value = searchInput.value.toLowerCase();
-            
-            if (value) {
-                const suggestions = searchData.filter(data => data.toLowerCase().includes(value));
-                // Display these suggestions to users
-                console.log(suggestions);
-            }
-        });
-
-        // Carousel for Featured Resources
-        const carousel = document.querySelector('.carousel');
-        let currentIndex = 0;
-
-        setInterval(function() {
-            const images = carousel.querySelectorAll('img');
-            images[currentIndex].style.display = 'none';
-            
-            currentIndex++;
-            if (currentIndex >= images.length) {
-                currentIndex = 0;
-            }
-            
-            images[currentIndex].style.display = 'block';
-        }, 3000);
-        // Light/Dark Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', function() {
-            const body = document.body;
-            
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-            } else {
-                body.classList.add('dark-mode');
-            }
-        });
-
-        // Example Chatbot Logic
-        const chatInput = document.getElementById('chat-input');
-        const chatSend = document.getElementById('chat-send');
-        const chatLogs = document.getElementById('chat-logs');
-
-        chatSend.addEventListener('click', function() {
-            const userMessage = chatInput.value;
-            chatLogs.innerHTML += `<div>User: ${userMessage}</div>`;
-
-            // Simple bot response
-            setTimeout(() => {
-                chatLogs.innerHTML += '<div>Bot: How can I assist you further?</div>';
-            }, 1000);
-
-            // Clear the chat input
-            chatInput.value = '';
-        });
-                function translate(lang) {
-            for (let key in translations) {
-                const elements = document.querySelectorAll(`[data-translate="${key}"]`);
-                elements.forEach(element => {
-                    if (translations[key][lang]) {
-                        element.textContent = translations[key][lang];
-                    } else {
-                        element.textContent = key; // default to English if no translation is found
-                    }
-                });
-            }
-        }
-
-        // Add 'data-translate' attribute to each translatable element on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            for (let key in translations) {
-                const elements = Array.from(document.body.getElementsByTagName('*')).filter(el => el.textContent.trim() === key && el.childElementCount === 0);
-                elements.forEach(element => {
-                    if (element.childNodes.length === 1) { // ensure we're not overwriting nested elements
-                        element.setAttribute('data-translate', key);
-                    }
-                });
-            }
-        });
+        // ... JavaScript Code ... //
     </script>
 </body>
 </html>
