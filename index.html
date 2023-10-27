@@ -7,7 +7,6 @@
     <title>Rochester Public Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Basic Styles */
         body {
             font-family: Arial, sans-serif;
             transition: background-color 0.3s, color 0.3s;
@@ -56,7 +55,6 @@
             display: block;
         }
 
-        /* Dark Theme */
         body.dark-mode {
             background-color: #333;
             color: #f4f4f4;
@@ -66,7 +64,6 @@
             background-color: #444;
         }
 
-        /* Chatbox Styles */
         #chatbox {
             border: 1px solid #ccc;
             width: 300px;
@@ -97,65 +94,62 @@
     </style>
 </head>
 <body>
-    <div id="hours-banner" data-translate="Mon-Thu 10AM-8PM, Fri-Sun 10AM-6PM">Mon-Thu 10AM-8PM, Fri-Sun 10AM-6PM</div>
+    <div id="hours-banner">Mon-Thu 10AM-8PM, Fri-Sun 10AM-6PM</div>
     <header>
-        <h1 data-translate="Rochester Public Library">Rochester Public Library</h1>
-        <button id="theme-toggle" data-translate="Toggle Dark/Light Mode">Toggle Dark/Light Mode</button>
+        <h1>Rochester Public Library</h1>
+        <button id="theme-toggle">Toggle Dark/Light Mode</button>
     </header>
-
     <div id="search-bar">
-        <i class="fas fa-home" data-translate="Home"></i>
-        <select data-translate-options="search-options-1">
+        <i class="fas fa-home"></i>
+        <select>
             <option>Everything</option>
-            <!-- ... Other options ... -->
+            <option>Books</option>
+            <option>Articles</option>
         </select>
-        <select data-translate-options="search-options-2">
+        <select>
             <option>All Fields</option>
-            <!-- ... Other options ... -->
+            <option>Title</option>
+            <option>Author</option>
         </select>
         <input type="search" placeholder="Search...">
     </div>
-
     <div id="language-selector">
-        <button class="language-btn" onclick="translate('english')" data-translate="English">English</button>
-        <button class="language-btn" onclick="translate('spanish')" data-translate="Spanish">Spanish</button>
-        <button class="language-btn" onclick="translate('somali')" data-translate="Somali">Somali</button>
+        <button class="language-btn">English</button>
+        <button class="language-btn">Spanish</button>
+        <button class="language-btn">Somali</button>
     </div>
-
     <div id="quick-links">
-        <a href="#" data-translate="New Materials"><i class="fas fa-book-reader"></i> New Materials</a>
-        <a href="#" data-translate="Digital Library"><i class="fas fa-tablet-alt"></i> Digital Library</a>
-        <a href="#" data-translate="Ask A Librarian"><i class="fas fa-user-tie"></i> Ask A Librarian</a>
+        <a href="#"><i class="fas fa-book-reader"></i> New Materials</a>
+        <a href="#"><i class="fas fa-tablet-alt"></i> Digital Library</a>
+        <a href="#"><i class="fas fa-user-tie"></i> Ask A Librarian</a>
     </div>
-
     <div class="carousel">
-        <!-- Replace with actual image paths -->
         <img src="LinkedIn-Learning-Catalog-Banner-900-x-356.png" alt="Resource 1">
-        <!-- ... Other images ... -->
+        <img src="Resource-2.png" alt="Resource 2">
+        <img src="Resource-3.png" alt="Resource 3">
     </div>
-
     <div>
-        <h2 data-translate="Chat With Us">Chat With Us</h2>
+        <h2>Chat With Us</h2>
         <div id="chatbox">
             <div id="chat-logs">
-                <!-- Chat logs appear here -->
+                <!-- Chat logs will be dynamically loaded here -->
             </div>
-            <input type="text" id="chat-input" placeholder="Type your message..." data-translate-placeholder="Type your message">
-            <button id="chat-send" data-translate="Send">Send</button>
+            <input type="text" id="chat-input" placeholder="Type your message...">
+            <button id="chat-send">Send</button>
         </div>
     </div>
-
     <div>
-        <h2 data-translate="Feedback Form">Feedback Form</h2>
+        <h2>Feedback Form</h2>
         <form>
-            <label for="feedback" data-translate="Your Feedback">Your Feedback:</label>
+            <label for="feedback">Your Feedback:</label>
             <textarea id="feedback" rows="4" cols="50"></textarea><br><br>
-            <input type="submit" value="Submit" data-translate-value="Submit">
+            <input type="submit" value="Submit">
         </form>
     </div>
-    
     <script>
-        // ... JavaScript Code ... //
+        document.getElementById("theme-toggle").addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+        });
     </script>
 </body>
 </html>
