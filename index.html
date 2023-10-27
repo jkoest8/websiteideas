@@ -150,6 +150,20 @@
         document.getElementById("theme-toggle").addEventListener("click", function() {
             document.body.classList.toggle("dark-mode");
         });
+                function translateTo(language) {
+            const headerTitle = document.querySelector("header h1");
+
+            switch (language) {
+                case 'spanish':
+                    headerTitle.textContent = "Biblioteca Pública de Rochester";
+                    break;
+                case 'somali':
+                    headerTitle.textContent = "Maktabadda Dadweynaha ee Rochester";
+                    break;
+                default:
+                    headerTitle.textContent = "Rochester Public Library";
+            }
+        }
     </script>
 </body>
 </html>
