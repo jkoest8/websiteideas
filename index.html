@@ -18,15 +18,22 @@
             padding: 1em 0;
             text-align: center;
         }
+        #hours-banner {
+            background-color: #0000FF;
+            color: #fff;
+            text-align: center;
+            padding: 0.5em 0;
+        }
         #search-bar {
             margin: 20px 0;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
-        #search-bar input[type="search"] {
+        #search-bar select, #search-bar input[type="search"] {
             padding: 10px;
-            width: 80%;
             font-size: 18px;
+            margin: 0 5px;
         }
         #quick-links {
             background-color: #f4f4f4;
@@ -56,11 +63,28 @@
     </style>
 </head>
 <body>
+    <div id="hours-banner">Mon-Thu 10AM-8PM, Fri-Sun 10AM-6PM</div>
     <header>
         <h1>Rochester Public Library</h1>
         <button id="theme-toggle">Toggle Dark/Light Mode</button>
     </header>
     <div id="search-bar">
+        <i class="fas fa-home"></i>
+        <select>
+            <option>Everything</option>
+            <option>Library Search</option>
+            <option>Digital Catalog</option>
+            <option>DVD Movies</option>
+        </select>
+        <select>
+            <option>All Fields</option>
+            <option>Author</option>
+            <option>Title</option>
+            <option>Subject</option>
+            <option>ISBN</option>
+            <option>Series</option>
+            <option>Call Number</option>
+        </select>
         <input type="search" placeholder="Search...">
     </div>
     <div id="quick-links">
@@ -83,7 +107,7 @@
         </form>
     </div>
     <div>
-        <h2>Ask Us</h2>
+        <h2>Chat With Us</h2>
         <div id="chatbox">
             <div id="chat-logs">
                 <!-- Chat logs appear here -->
@@ -123,7 +147,6 @@
             
             images[currentIndex].style.display = 'block';
         }, 3000);
-
         // Light/Dark Theme Toggle
         const themeToggle = document.getElementById('theme-toggle');
         themeToggle.addEventListener('click', function() {
