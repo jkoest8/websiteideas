@@ -76,6 +76,14 @@
         #chat-input {
             width: 80%;
         }
+        #language-selector {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .language-btn {
+            margin: 0 5px;
+            padding: 5px 10px;
+        }
     </style>
 </head>
 <body>
@@ -103,6 +111,12 @@
         </select>
         <input type="search" placeholder="Search...">
     </div>
+        <!-- Language Selector -->
+    <div id="language-selector">
+        <button class="language-btn" onclick="translate('english')">English</button>
+        <button class="language-btn" onclick="translate('spanish')">Spanish</button>
+        <button class="language-btn" onclick="translate('somali')">Somali</button>
+    </div>
     <div id="quick-links">
         <a href="#"><i class="fas fa-book-reader"></i> New Materials</a>
         <a href="#"><i class="fas fa-tablet-alt"></i> Digital Library</a>
@@ -114,14 +128,7 @@
         <img src="img2.jpg" alt="Resource 2">
         <img src="img3.jpg" alt="Resource 3">
     </div>
-    <div>
-        <h2>Feedback Form</h2>
-        <form>
-            <label for="feedback">Your Feedback:</label>
-            <textarea id="feedback" rows="4" cols="50"></textarea><br><br>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+
     <div>
         <h2>Chat With Us</h2>
         <div id="chatbox">
@@ -132,7 +139,102 @@
             <button id="chat-send">Send</button>
         </div>
     </div>
+
+        <div>
+        <h2>Feedback Form</h2>
+        <form>
+            <label for="feedback">Your Feedback:</label>
+            <textarea id="feedback" rows="4" cols="50"></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
     <script>
+
+        const translations = {
+    "Rochester Public Library": {
+        spanish: "Biblioteca Pública de Rochester",
+        somali: "Libraryka Dadweynaha Rochester"
+    },
+    "Mon-Thu 10AM-8PM, Fri-Sun 10AM-6PM": {
+        spanish: "Lun-Jue 10AM-8PM, Vie-Dom 10AM-6PM",
+        somali: "Isniin-Khamiis 10AM-8PM, Jimcaha-Habeen 10AM-6PM"
+    },
+    "Home": {
+        spanish: "Inicio",
+        somali: "Guriga"
+    },
+    "Everything": {
+        spanish: "Todo",
+        somali: "Dhamaan"
+    },
+    "Library search": {
+        spanish: "Búsqueda en la biblioteca",
+        somali: "Raadinta maktabadda"
+    },
+    "Digital catalog": {
+        spanish: "Catálogo digital",
+        somali: "Kataloogiga dijitaalka"
+    },
+    "DVD Movies": {
+        spanish: "Películas en DVD",
+        somali: "Filimada DVD"
+    },
+    "All Fields": {
+        spanish: "Todos los campos",
+        somali: "Dhamaan goobo"
+    },
+    "Author": {
+        spanish: "Autor",
+        somali: "Qoraa"
+    },
+    "Title": {
+        spanish: "Título",
+        somali: "Cinwaan"
+    },
+    "Subject": {
+        spanish: "Tema",
+        somali: "Mawduuc"
+    },
+    "ISBN": {
+        spanish: "ISBN",
+        somali: "ISBN"
+    },
+    "Series": {
+        spanish: "Serie",
+        somali: "Silsilad"
+    },
+    "Call Number": {
+        spanish: "Número de llamada",
+        somali: "Lambarka wacidda"
+    },
+    "Chat With Us": {
+        spanish: "Chatea con nosotros",
+        somali: "Sheeko naga"
+    },
+    "Type your message": {
+        spanish: "Escribe tu mensaje",
+        somali: "Qor fariintaada"
+    },
+    "Send": {
+        spanish: "Enviar",
+        somali: "Dir"
+    },
+    "Toggle Dark/Light Mode": {
+        spanish: "Cambiar Modo Oscuro/Claro",
+        somali: "Badal Mode Mudug/Laan"
+    },
+    "Digital Library": {
+        spanish: "Biblioteca Digital",
+        somali: "Maktabadda Dijitaalka"
+    },
+    "Ask a Librarian": {
+        spanish: "Pregunte a un bibliotecario",
+        somali: "Weeddi Maktabaddaha"
+    },
+    // ... add more translations as needed ...
+};
+
         // Search Autocomplete
         const searchInput = document.querySelector('input[type="search"]');
 
@@ -191,6 +293,30 @@
 
             // Clear the chat input
             chatInput.value = '';
+        });
+                function translate(lang) {
+            for (let key in translations) {
+                const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+                elements.forEach(element => {
+                    if (translations[key][lang]) {
+                        element.textContent = translations[key][lang];
+                    } else {
+                        element.textContent = key; // default to English if no translation is found
+                    }
+                });
+            }
+        }
+
+        // Add 'data-translate' attribute to each translatable element on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            for (let key in translations) {
+                const elements = document.querySelectorAll(`:contains("${key}")`);
+                elements.forEach(element => {
+                    if (element.childNodes.length === 1) { // ensure we're not overwriting nested elements
+                        element.setAttribute('data-translate', key);
+                    }
+                });
+            }
         });
     </script>
 </body>
